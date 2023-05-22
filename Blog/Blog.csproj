@@ -20,4 +20,8 @@
     <Folder Include="Areas\Admin\Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlogAccesoDatos\Blog.AccesoDatos.csproj" />
+  </ItemGroup>
+
 </Project>
