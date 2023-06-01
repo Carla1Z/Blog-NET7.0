@@ -16,10 +16,18 @@ namespace Blog.Areas.Admin.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
 
 
         #region Llamadas a la API
