@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     cargarDatatable();
-})
+});
 
 function cargarDatatable() {
     dataTable = $("#tblArticulos").DataTable({
@@ -14,20 +14,21 @@ function cargarDatatable() {
         "columns": [
             { "data": "id", "width": "5%" },
             { "data": "nombre", "width": "25%" },
-            {"data": "categoria", "width": "15%"}
+            { "data": "categoria", "width": "15%" },
             { "data": "fechaCreacion", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center">
-                                <a href="/Admin/Articulos/Edit/${data}" class="btn btn-success" style="cursor: pointer;width:100px;">
+                                <a href="/Admin/Articulos/Edit/${data}" class="btn btn-success" style="cursor:pointer; width:100px;">
                                 <i class="far fa-edit"></i>Editar
                                 </a>
                                 &nbsp;
-                                <a onclick="Delete('/Admin/Articulos/Delete/${data}')" class="btn btn-danger" style="cursor:pointer; width:100px;">                                <i class="far fa-trash-alt"></i>Borrar
+                                <a onclick=Delete("/Admin/Articulos/Delete/${data}") class="btn btn-danger" style="cursor:pointer; width:100px;">
+                                <i class="far fa-trash-alt"></i>Borrar
                                 </a>
                             </div>
-                    `;
+                            `;
                 }, "width": "30%"
             }
         ],
