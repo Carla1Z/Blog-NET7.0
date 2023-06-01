@@ -1,5 +1,6 @@
 ﻿using Blog.AccesoDatos.Data.Repository.IRepository;
 using Blog.Data;
+using Blog.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Areas.Admin.Controllers
@@ -25,7 +26,14 @@ namespace Blog.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            ArticuloVM artivm = new ArticuloVM()
+            {
+                Articulo = new Blog.Models.Articulo(),
+                ListaCategorias = _contenedorTrabajo.Categoria.GetListaCategorias()
+            };
+
+            return View(artivm);
+
         }
 
 
