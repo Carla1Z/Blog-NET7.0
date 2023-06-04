@@ -108,7 +108,7 @@ namespace Blog.Areas.Admin.Controllers
 
                     var rutaImagen = Path.Combine(rutaPrincipal, articuloDesdeDb.UrlImagen.TrimStart('\\'));
 
-                    if (System.IO.File.Exists(rutaPrincipal))
+                    if (System.IO.File.Exists(rutaImagen))
                     {
                         System.IO.File.Delete(rutaImagen);
                     }
@@ -148,6 +148,30 @@ namespace Blog.Areas.Admin.Controllers
         {
             //Opcion 1
             return Json(new { data = _contenedorTrabajo.Articulo.GetAll() });
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            var articuloDesdeDb = _contenedorTrabajo.Articulo.Get(id);
+            string rutaDirectorioPrincipal = _hostingEnvironment.WebRootPath;
+            var rutaImagen = Path.Combine(rutaDirectorioPrincipal, articuloDesdeDb.UrlImagen.TrimStart('\\'));
+
+            if (System.IO.File.Exists(rutaImagen))
+            {
+                System.IO.File.Delete(rutaImagen);
+            }
+
+            if (articuloDesdeDb == null)
+            {
+                return Json(new { success = false, message = "Error borrando artículo" });
+
+            }
+
+            _contenedorTrabajo.Articulo.Remove(articuloDesdeDb);
+            _contenedorTrabajo.Save();
+
+            return Json(new { success = true, message = "Artículo borrado correctamente" });
         }
 
         #endregion
