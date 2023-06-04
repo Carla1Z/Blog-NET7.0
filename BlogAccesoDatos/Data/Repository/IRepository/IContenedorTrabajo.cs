@@ -11,6 +11,7 @@ namespace Blog.AccesoDatos.Data.Repository.IRepository
         ICategoriaRepository Categoria { get; }
         //Aquí se deben ir agregando los diferentes repositorios
         IArticuloRepository Articulo { get; }
+        ISliderRepository Slider { get; }
 
         void Save();
 
