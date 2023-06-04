@@ -147,7 +147,7 @@ namespace Blog.Areas.Admin.Controllers
         public IActionResult GetAll()
         {
             //Opcion 1
-            return Json(new { data = _contenedorTrabajo.Articulo.GetAll() });
+            return Json(new { data = _contenedorTrabajo.Articulo.GetAll(includeProperties: "Categoria") });
         }
 
         [HttpDelete]
