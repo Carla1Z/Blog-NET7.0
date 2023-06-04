@@ -70,6 +70,23 @@ namespace Blog.Areas.Admin.Controllers
             return View(artiVM);
         }
 
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            ArticuloVM artivm = new ArticuloVM()
+            {
+                Articulo = new Blog.Models.Articulo(),
+                ListaCategorias = _contenedorTrabajo.Categoria.GetListaCategorias()
+            };
+
+            if (id != null)
+            {
+                artivm.Articulo = _contenedorTrabajo.Articulo.Get(id.GetValueOrDefault());
+            }
+
+            return View(artivm);
+        }
+
         #region Llamadas a la API
         [HttpGet]
         public IActionResult GetAll()
