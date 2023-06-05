@@ -23,6 +23,10 @@ namespace Blog.Areas.Cliente.Controllers
                 Slider = _contenedorTrabajo.Slider.GetAll(),
                 ListaArticulos = _contenedorTrabajo.Articulo.GetAll()
             };
+
+            //Esta línea es para poder saber si estamos en el home o no
+            ViewBag.IsHome = true;
+
             return View(homeVm);
         }
 
