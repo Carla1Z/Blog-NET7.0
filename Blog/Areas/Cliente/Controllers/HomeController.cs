@@ -29,6 +29,18 @@ namespace Blog.Areas.Cliente.Controllers
 
             return View(homeVm);
         }
+        
+        public IActionResult Details(int id)
+        {
+            var articuloDesdeDb = _contenedorTrabajo.Articulo.Get(id);
+
+            if (articuloDesdeDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(articuloDesdeDb);
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
